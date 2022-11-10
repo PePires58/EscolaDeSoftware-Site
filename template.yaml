@@ -33,6 +33,6 @@ Resources:
               - s3:PutObject
             Effect: Allow
             Resource:
-              - !Sub arn:aws:s3:::${SiteContentBucket}
-              - !Sub arn:aws:s3:::${SiteContentBucket}/*
+              - !Sub arn:aws:s3:::${Environment}-${SiteContentBucket}
+              - !Sub arn:aws:s3:::${Environment}-${SiteContentBucket}/*
             Principal: '*'
