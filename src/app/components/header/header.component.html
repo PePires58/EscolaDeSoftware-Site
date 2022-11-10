@@ -1,0 +1,31 @@
+<mat-toolbar id="header" class="cor-fundo-escuro flex-justify-center">
+  <div class="container">
+    <div class="flex flex-space-between flex-align-center">
+      <img src="assets/logo.webp" height="30" alt="logo Escola de software" />
+      &nbsp;
+      <h1 class="cor-texto-claro">Escola de Software</h1>
+      <span style="color:pink">&nbsp;beta</span>
+      <span class="full-width"></span>
+      <div class="flex flex-space-between item-pc">
+        <a class="cor-texto-claro" href="#cursos">Cursos online</a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="cor-texto-claro" href="#treinamento-corp">Treinamento Corporativo</a>
+        &nbsp;&nbsp;&nbsp;
+        <a mat-raised-button href="https://web.whatsapp.com/send/?1=pt_BR&phone=5511998161253" target="_blank">FALE
+          CONOSCO</a>
+      </div>
+
+      <div class="item-mobile">
+        <button mat-mini-fab [matMenuTriggerFor]="menu" color="defaut">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item href="#cursos">Cursos online</a>
+          <a mat-menu-item href="#treinamento-corp">Treinamento corporativo</a>
+          <a mat-menu-item href="https://web.whatsapp.com/send/?1=pt_BR&phone=5511998161253" target="_blank">Fale
+            Conosco</a>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

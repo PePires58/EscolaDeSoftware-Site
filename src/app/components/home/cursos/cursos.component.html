@@ -1,0 +1,49 @@
+<div class="flex flex-justify-center cor-fundo-escuro">
+  <div class="container">
+    <div class="flex flex-space-between">
+      <div class="flex-column full-width">
+        <h2 class="cor-titulo-claro">CURSOS GRATUITOS</h2>
+        <p class="cor-texto-claro" style="margin-top: 0px">Está em dúvida? Comece de graça</p>
+        <br>
+        <div class="flex flex-space-between item-pc">
+          <mat-card *ngFor="let item of itensCurso">
+            <mat-card-header>
+              <mat-card-title class="cor-texto-escuro">{{item.titulo}}</mat-card-title>
+              <mat-card-subtitle>{{item.categoria}}</mat-card-subtitle>
+            </mat-card-header>
+            <div class="borda-item-curso flex flex-justify-center full-width">
+              <img style=" width: fit-content" height="194" src="assets/{{item.urlImagem}}" [alt]="item.altImagem">
+            </div>
+            <mat-card-content>
+              <p class="descricao-item" style="padding-top:8px">{{item.descricaoItem}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a mat-raised-button [href]="item.urlCurso" target="_blank" color="primary">ACESSE AGORA</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="flex-column item-mobile">
+          <mat-card *ngFor="let item of itensCurso">
+            <mat-card-header>
+              <mat-card-title class="cor-texto-escuro">{{item.titulo}}</mat-card-title>
+              <mat-card-subtitle>{{item.categoria}}</mat-card-subtitle>
+            </mat-card-header>
+            <div class="borda-item-curso flex flex-justify-center full-width">
+              <img style=" width: fit-content" height="194" src="assets/{{item.urlImagem}}" [alt]="item.altImagem">
+            </div>
+            <mat-card-content>
+              <p class="descricao-item" style="padding-top:8px">{{item.descricaoItem}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a mat-raised-button [href]="item.urlCurso" target="_blank" color="primary">ACESSE AGORA</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

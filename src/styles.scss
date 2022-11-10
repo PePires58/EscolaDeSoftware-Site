@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.full-width {
+  width: 100%;
+}
+
+$cor-tema-escuro: #20265A;
+$cor-tema-claro: #fff;
+
+.cor-titulo-escuro,
+.cor-texto-escuro {
+  color: $cor-tema-escuro;
+}
+
+.cor-titulo-claro,
+.cor-texto-claro {
+  color: $cor-tema-claro;
+}
+
+.cor-fundo-escuro {
+  background-color: $cor-tema-escuro;
+}
+
+@import './estilos-flex.scss';
+@import './medias-screen.scss'

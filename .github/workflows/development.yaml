@@ -1,0 +1,39 @@
+name: Deploy Site on S3 - Development
+on:
+  push:
+    branches: [development]
+
+jobs:
+  Deploy-stack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Restore dependencies
+        run: npm install
+
+      - name: Build project
+        run: ng build
+
+      - name: Testing
+        run: ng test
+
+      - name: Package Template
+        run: |
+          sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy Template
+        run: |
+          aws cloudformation deploy --template-file deploy.yaml --stack-name dev-escoladesoftware-site --capabilities CAPABILITY_NAMED_IAM --parameter-overrides  file://infra/dev.parameters.json
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy site
+        run: aws s3 sync dist/escoladesoftware/ s3://dev-escoladesoftware-site

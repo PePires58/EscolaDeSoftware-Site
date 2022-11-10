@@ -1,0 +1,45 @@
+<div class="flex flex-justify-center">
+  <div class="container">
+    <div class="flex flex-space-between">
+      <div class="flex-column full-width">
+        <h2 class="cor-titulo-escuro">TREINAMENTO CORPORATIVO</h2>
+        <p class="cor-texto-escuro" style="margin-top: 0px">Está precisando treinar seus colaboradores? Nós temos a
+          solução. Entre em contato conosco e solicite um treinamento.</p>
+        <form [formGroup]="formTreinamento" class="flex-column">
+          <mat-form-field class="full-width" appearance="standard">
+            <mat-label>Email ou telefone</mat-label>
+            <input type="email" matInput formControlName="emailTelefone" placeholder="email ou telefone">
+            <mat-error *ngIf="formTreinamento.get('emailTelefone')?.hasError('required')">
+              Email ou telefone é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="standard">
+            <mat-label>Mensagem</mat-label>
+            <textarea maxlength="1000" matInput formControlName="descricao"
+              placeholder="digite sua mensagem para nós :D">
+            </textarea>
+            <mat-error *ngIf="formTreinamento.get('descricao')?.hasError('required')">
+              Mensagem é obrigatória
+            </mat-error>
+            <mat-error
+              *ngIf="formTreinamento.get('descricao')?.hasError && !formTreinamento.get('descricao')?.hasError('required')">
+              Mensagem deve ter no máximo 1000 caracteres
+            </mat-error>
+          </mat-form-field>
+          <div class="flex flex-align-center">
+            <button type="button" mat-mini-fab color="primary" (click)="txtAnexo.click()">
+              <mat-icon>attach_file</mat-icon>
+            </button> &nbsp; &nbsp;
+            <p>{{ nomeArquivo ? nomeArquivo : 'adicione um anexo' }}</p>
+            <input hidden (change)="onAdicionarAnexo()" #txtAnexo type="file" id="txtAnexo">
+          </div>
+          <div class="flex flex-justify-center full-width">
+            <button (click)="onEnviarDados()" mat-raised-button color="primary" type="button">ENVIAR</button>
+          </div>
+        </form>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

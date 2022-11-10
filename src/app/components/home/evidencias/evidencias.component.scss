@@ -1,0 +1,26 @@
+@media screen and (min-width:1024px) {
+  mat-card {
+    width: 20%;
+  }
+
+
+  mat-card-content {
+    min-height: 110px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  mat-card {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+
+  mat-card-content {
+    min-height: 30px;
+  }
+}
+
+h2 {
+  margin-bottom: 0;
+}

@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: escoladesoftware_blog_Site_backend
+Parameters:
+  BucketName:
+    Description: S3 Bucket Name
+    Type: String
+  Environment:
+    Description: Environment
+    Type: String
+
+Resources:
+
+  SiteContentBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Join ["-", [!Ref Environment, !Ref BucketName]]
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+
+  SiteContentBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteContentBucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource:
+              - !Sub arn:aws:s3:::${SiteContentBucket}
+              - !Sub arn:aws:s3:::${SiteContentBucket}/*
+            Principal: '*'

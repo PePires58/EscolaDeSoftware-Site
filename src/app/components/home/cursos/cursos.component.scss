@@ -1,0 +1,33 @@
+h2 {
+  margin-bottom: 0px;
+}
+
+@media screen and (min-width:1024px) {
+  mat-card {
+    width: 27%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  mat-card {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+::ng-deep div.mat-card-header-text {
+  margin: 0px;
+}
+
+.borda-imagem {
+  border: 1px solid black;
+}
+
+.borda-item-curso {
+  border: 1px solid black;
+  border-radius: 1.5%;
+}
+
+.descricao-item {
+  min-height: 55px;
+}
