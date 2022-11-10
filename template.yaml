@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: escoladesoftware_blog_Site_backend
+Description: escoladesoftware_blog_site
 Parameters:
   BucketName:
     Description: S3 Bucket Name
@@ -33,6 +33,6 @@ Resources:
               - s3:PutObject
             Effect: Allow
             Resource:
-              - !Sub arn:aws:s3:::${Environment}-${SiteContentBucket}
-              - !Sub arn:aws:s3:::${Environment}-${SiteContentBucket}/*
+              - !Sub arn:aws:s3:::${Environment}-${BucketName}
+              - !Sub arn:aws:s3:::${Environment}-${BucketName}/*
             Principal: '*'
