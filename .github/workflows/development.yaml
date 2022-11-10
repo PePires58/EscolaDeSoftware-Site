@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install angularCli
+        run: npm i @angular/cli
+
       - name: Restore dependencies
         run: npm install
 
