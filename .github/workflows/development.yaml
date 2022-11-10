@@ -19,9 +19,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Testing
-        run: npm run test
-
       - name: Package Template
         run: |
           sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml
