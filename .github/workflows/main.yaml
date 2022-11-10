@@ -17,7 +17,7 @@ jobs:
         run: ng build
 
       - name: Testing
-        run: ng test
+        run: npm run ng test
 
       - name: Package Template
         run: |
