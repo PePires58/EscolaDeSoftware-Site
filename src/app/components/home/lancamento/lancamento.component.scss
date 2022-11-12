@@ -6,3 +6,30 @@ p {
 img {
   margin-top: 20px;
 }
+
+@media screen and (min-width:1024px) {
+  .div-principal {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .div-imagens {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .div-imagens-filha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .div-imagens>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

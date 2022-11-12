@@ -15,10 +15,26 @@
     margin-bottom: 10px;
   }
 
-
   mat-card-content {
     min-height: 30px;
   }
+
+  .div-itens-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+
+@media screen and (min-width:1024px) {
+
+  .div-itens-card {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
 }
 
 h2 {

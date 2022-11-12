@@ -6,12 +6,23 @@ h2 {
   mat-card {
     width: 27%;
   }
+
+  .div-card-curso {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   mat-card {
     margin-top: 5px;
     margin-bottom: 10px;
+  }
+
+  .div-card-curso {
+    display: flex;
+    flex-direction: column;
   }
 }
 

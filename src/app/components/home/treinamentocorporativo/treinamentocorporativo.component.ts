@@ -12,12 +12,8 @@ export class TreinamentocorporativoComponent {
 
   infoTreinamentoCorporativo: InfoTreinamentoCorporativo;
   formTreinamento: FormGroup;
-  arquivoBuffer: ArrayBuffer;
-  nomeArquivo: string;
 
   constructor(formBuilder: FormBuilder, private enviarEmailService: EnviarEmailService) {
-    this.arquivoBuffer = new ArrayBuffer(0);
-    this.nomeArquivo = '';
     this.infoTreinamentoCorporativo = new InfoTreinamentoCorporativo();
     this.formTreinamento = formBuilder.group({
       'emailTelefone': new FormControl('', Validators.required),
@@ -32,20 +28,4 @@ export class TreinamentocorporativoComponent {
     else
       this.formTreinamento.markAllAsTouched();
   }
-
-  onAdicionarAnexo() {
-    const txtAnexo: any = document.querySelector('#txtAnexo');
-
-    if (typeof (FileReader) !== 'undefined') {
-      const leitorArquivo = new FileReader();
-
-      leitorArquivo.onload = (e: any) => {
-        this.arquivoBuffer = e.target.result;
-      };
-
-      this.nomeArquivo = txtAnexo.files[0].name;
-      leitorArquivo.readAsArrayBuffer(txtAnexo.files[0]);
-    }
-  }
-
 }

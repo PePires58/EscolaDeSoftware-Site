@@ -5,21 +5,7 @@
         <h2 class="cor-titulo-escuro">PESSOAS QUE CONFIAM NO NOSSO TRABALHO</h2>
         <p style="margin-top: 0">Configura o que as pessoas que já assistiram nossos vídeos falam sobre nós</p>
         <br>
-        <div class="flex flex-space-between flex-break item-pc">
-          <mat-card *ngFor="let item of itensEvidencia">
-            <mat-card-header>
-              <mat-card-title class="cor-texto-escuro">{{item.nomePessoa}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p style="padding-top:8px">{{item.descricaoEvidencia}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions align="end">
-              <a mat-button [href]="item.linkEvidencia" target="_blank" color="primary">VISUALIZE</a>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-        <div class="flex-column item-mobile">
+        <div class="div-itens-card">
           <mat-card *ngFor="let item of itensEvidencia">
             <mat-card-header>
               <mat-card-title class="cor-texto-escuro">{{item.nomePessoa}}</mat-card-title>

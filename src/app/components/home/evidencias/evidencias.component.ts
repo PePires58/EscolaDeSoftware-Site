@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { InfoItemEvidencia } from 'src/app/models/info-item-evidencia';
 
 @Component({
@@ -6,7 +6,7 @@ import { InfoItemEvidencia } from 'src/app/models/info-item-evidencia';
   templateUrl: './evidencias.component.html',
   styleUrls: ['./evidencias.component.scss']
 })
-export class EvidenciasComponent implements OnInit {
+export class EvidenciasComponent {
 
   itensEvidencia: InfoItemEvidencia[];
 
@@ -32,8 +32,4 @@ export class EvidenciasComponent implements OnInit {
       linkEvidencia: 'https://www.youtube.com/watch?v=tgMnKf96h2k'
     }];
   }
-
-  ngOnInit(): void {
-  }
-
 }

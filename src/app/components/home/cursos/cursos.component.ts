@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { InfoItemCurso } from 'src/app/models/info-item-curso';
 
 @Component({
@@ -6,7 +6,7 @@ import { InfoItemCurso } from 'src/app/models/info-item-curso';
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.scss']
 })
-export class CursosComponent implements OnInit {
+export class CursosComponent {
 
   itensCurso: InfoItemCurso[];
 
@@ -36,8 +36,4 @@ export class CursosComponent implements OnInit {
       altImagem: 'HTML 5'
     }]
   }
-
-  ngOnInit(): void {
-  }
-
 }
