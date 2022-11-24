@@ -22,6 +22,46 @@ Resources:
         IgnorePublicAcls: False
         RestrictPublicBuckets: False
 
+  SiteCloudFront:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: "cloudfront para site"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          CachedMethods:
+            - GET
+            - HEAD
+          TargetOriginId: "site_origin"
+          ForwardedValues:
+              Cookies:
+                Forward: "none"
+              QueryString: false
+          ViewerProtocolPolicy: "redirect-to-https"
+          MaxTTL: 60
+          MinTTL: 10
+          DefaultTTL: 30
+        DefaultRootObject: "index.html"
+        Enabled: true
+        HttpVersion: String
+        IPV6Enabled: false
+        Origins:
+          - DomainName: !GetAtt
+              - SiteContentBucket
+              - DomainName
+            Id: "site_origin"
+        PriceClass: PriceClass_All
+        Restrictions:
+          GeoRestriction:
+            Locations:
+              - BR
+            RestrictionType: whitelist
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+
   SiteContentBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
