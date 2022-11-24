@@ -3,8 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
@@ -14,7 +13,7 @@ export class HomeComponent implements OnInit {
     this.metaTagService.addTags([
       {
         name: 'description',
-        content: 'Somos uma escola de software especializada em treinamentos para certificações AWS e desenvolvimento BACK-END. Atuando tanto para treinamentos corporativos quanto para treinamentos para pessoas física'
+        content: 'Somos uma escola de software especializada em treinamentos para certificações AWS e desenvolvimento BACK-END com C# e node.JS. Atuando tanto para treinamentos corporativos quanto para treinamentos para pessoas física'
       },
       {
         name: 'keywords',
