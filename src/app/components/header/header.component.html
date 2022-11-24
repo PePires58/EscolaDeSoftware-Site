@@ -1,7 +1,7 @@
 <mat-toolbar id="header" class="cor-fundo-escuro flex-justify-center">
   <div class="container">
     <div class="flex flex-space-between flex-align-center">
-      <img src="assets/logo.webp" height="30" alt="logo Escola de software" />
+      <img src="assets/logo.webp" height="30" width="50" alt="logo Escola de software" />
       &nbsp;
       <h1 class="cor-texto-claro">Escola de Software</h1>
       <span style="color:pink">&nbsp;beta</span>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="item-mobile">
-        <button mat-mini-fab [matMenuTriggerFor]="menu" color="defaut">
+        <button mat-mini-fab [matMenuTriggerFor]="menu" aria-label="botão do menu" alt="botão do menu" color="defaut">
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">

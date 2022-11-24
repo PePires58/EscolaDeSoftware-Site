@@ -24,6 +24,7 @@ export class TreinamentocorporativoComponent {
   onEnviarDados() {
     if (this.formTreinamento.valid) {
       this.enviarEmailService.Post(this.infoTreinamentoCorporativo)
+        .subscribe();
     }
     else
       this.formTreinamento.markAllAsTouched();
