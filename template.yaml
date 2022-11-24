@@ -53,6 +53,10 @@ Resources:
               - SiteContentBucket
               - DomainName
             Id: "site_origin"
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 8080
+              OriginProtocolPolicy: https-only
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
