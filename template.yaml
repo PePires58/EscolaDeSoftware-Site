@@ -56,7 +56,7 @@ Resources:
             CustomOriginConfig:
               HTTPPort: 80
               HTTPSPort: 8080
-              OriginProtocolPolicy: https-only
+              OriginProtocolPolicy: match-viewer
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
@@ -79,4 +79,5 @@ Resources:
               - !Sub arn:aws:s3:::${Environment}-${BucketName}
               - !Sub arn:aws:s3:::${Environment}-${BucketName}/*
             Principal:
-              Service: "cloudfront.amazonaws.com"
+              Service:
+                - "cloudfront.amazonaws.com"
