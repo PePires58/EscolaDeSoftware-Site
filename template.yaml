@@ -17,10 +17,10 @@ Resources:
       BucketName: !Join ["-", [!Ref Environment, !Ref BucketName]]
       AccessControl: Private
       PublicAccessBlockConfiguration:
-        BlockPublicAcls: False
-        BlockPublicPolicy: False
-        IgnorePublicAcls: False
-        RestrictPublicBuckets: False
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
 
   SiteCloudFront:
     Type: AWS::CloudFront::Distribution
@@ -74,9 +74,9 @@ Resources:
         Statement:
           - Action:
               - s3:GetObject
-              - s3:PutObject
             Effect: Allow
             Resource:
               - !Sub arn:aws:s3:::${Environment}-${BucketName}
               - !Sub arn:aws:s3:::${Environment}-${BucketName}/*
-            Principal: '*'
+            Principal:
+              Service: "cloudfront.amazonaws.com"
