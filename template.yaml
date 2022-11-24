@@ -46,7 +46,7 @@ Resources:
           DefaultTTL: 30
         DefaultRootObject: "index.html"
         Enabled: true
-        HttpVersion: String
+        HttpVersion: http1.1
         IPV6Enabled: false
         Origins:
           - DomainName: !GetAtt
