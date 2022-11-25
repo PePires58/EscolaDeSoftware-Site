@@ -47,7 +47,6 @@ Resources:
           MinTTL: 10
           DefaultTTL: 30
           Compress: true
-          CachePolicyId: "CachingOptimized"
         DefaultRootObject: "index.html"
         Enabled: true
         HttpVersion: http2
