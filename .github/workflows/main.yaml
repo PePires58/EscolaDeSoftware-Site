@@ -4,23 +4,30 @@ on:
     branches: [main]
 
 jobs:
-  Deploy-stack:
-    runs-on: ubuntu-latest
-
+  Build-project:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
 
       - name: Install angularCli
-        run: npm i @angular/cli
+        run: npm install -g @angular/cli@latest
 
       - name: Restore dependencies
         run: npm install
 
       - name: Build project
-        run: ng build
+        run: npm run build
 
-      - name: Testing
-        run: npm run ng test
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: project-dist
+          path: dist
+
+  Deploy-infra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
       - name: Package Template
         run: |
@@ -32,11 +39,26 @@ jobs:
 
       - name: Deploy Template
         run: |
-          aws cloudformation deploy --template-file deploy.yaml --stack-name prod-escoladesoftware-site --capabilities CAPABILITY_NAMED_IAM --parameter-overrides  file://infra/dev.parameters.json
+          aws cloudformation deploy --template-file deploy.yaml --stack-name prod-escoladesoftware-site --capabilities CAPABILITY_NAMED_IAM --parameter-overrides  file://infra/prod.parameters.json
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
+  Deploy-site:
+    runs-on: ubuntu-latest
+    needs: [Deploy-infra, Build-project]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download project dist
+        uses: actions/download-artifact@v3
+        with:
+          name: project-dist
+
       - name: Deploy site
-        run: aws s3 sync dist/escoladesoftware/ s3://prod-escoladesoftware-site
+        run: aws s3 sync escoladesoftware/ s3://prod-escoladesoftware-site
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}

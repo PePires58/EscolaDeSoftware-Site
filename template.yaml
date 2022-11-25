@@ -114,3 +114,6 @@ Resources:
             Principal:
               Service:
                 - "cloudfront.amazonaws.com"
+            Condition:
+              StringEquals:
+                'AWS:SourceArn': !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${SiteCloudFront}"
