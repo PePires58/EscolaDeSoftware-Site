@@ -37,7 +37,7 @@ Resources:
             - HEAD
           TargetOriginId:
             Fn::Sub:
-              "${Environment}-${BucketName}-site.s3.${AWS::Region}.amazonaws.com"
+              "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
           ForwardedValues:
               Cookies:
                 Forward: "none"
@@ -54,10 +54,10 @@ Resources:
         Origins:
           - DomainName:
               Fn::Sub:
-                "${Environment}-${BucketName}-site.s3.${AWS::Region}.amazonaws.com"
+                "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
             Id:
               Fn::Sub:
-                "${Environment}-${BucketName}-site.s3.${AWS::Region}.amazonaws.com"
+                "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
             CustomOriginConfig:
               HTTPPort: 80
               HTTPSPort: 8080
