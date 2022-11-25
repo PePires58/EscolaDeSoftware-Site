@@ -18,6 +18,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: project dist
+          path: dist
+
   Deploy-infra:
     runs-on: ubuntu-latest
     steps:
