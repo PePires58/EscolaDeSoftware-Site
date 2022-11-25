@@ -44,10 +44,6 @@ Resources:
           TargetOriginId:
             Fn::Sub:
               "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
-          ForwardedValues:
-              Cookies:
-                Forward: "none"
-              QueryString: false
           ViewerProtocolPolicy: "redirect-to-https"
           MaxTTL: 60
           MinTTL: 10
@@ -65,8 +61,7 @@ Resources:
               Fn::Sub:
                 "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
             S3OriginConfig:
-              OriginAccessIdentity:
-                !Join ["", ["origin-access-identity/cloudfront/", !GetAtt SiteCloudFrontOAI.Id]]
+              OriginAccessIdentity: !Join ["", ["origin-access-identity/cloudfront/", !GetAtt SiteCloudFrontOAI.Id]]
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
