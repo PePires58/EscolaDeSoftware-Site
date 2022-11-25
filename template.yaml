@@ -8,9 +8,31 @@ Parameters:
   Environment:
     Description: Environment
     Type: String
+  CachePolicy:
+    Description: Politica de cache
+    Type: String
+    Default: CachingOptimized
+    AllowedValues:
+      - CachingOptimized
+      - CachingDisabled
+      - CachingOptimizedForUncompressedObjects
+      - Elemental-MediaPackage
+      - Amplify
+
+Mappings:
+  CachePolicyIds:
+    CachingOptimized:
+      Id: 658327ea-f89d-4fab-a63d-7e88639e58f6
+    CachingDisabled:
+      Id: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+    CachingOptimizedForUncompressedObjects:
+      Id: b2884449-e4de-46a7-ac36-70bc7f1ddd6d
+    Elemental-MediaPackage:
+      Id: 08627262-05a9-4f76-9ded-b50ca2e3a84f
+    Amplify:
+      Id: 2e54312d-136d-493c-8eb9-b001f22f67d2
 
 Resources:
-
   SiteContentBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -22,11 +44,15 @@ Resources:
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
 
-  SiteCloudFrontOAI:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+  SiteCloudFrontOAC:
+    Type: AWS::CloudFront::OriginAccessControl
     Properties:
-    CloudFrontOriginAccessIdentityConfig:
-      Comment: !Sub "OIA para ${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
+      OriginAccessControlConfig:
+        Description: !Sub "OIA para ${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
+        Name: !Sub "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
 
   SiteCloudFront:
     Type: AWS::CloudFront::Distribution
@@ -49,6 +75,7 @@ Resources:
           MinTTL: 10
           DefaultTTL: 30
           Compress: true
+          CachePolicyId: !FindInMap [ CachePolicyIds, !Ref CachePolicy , Id ]
         DefaultRootObject: "index.html"
         Enabled: true
         HttpVersion: http2
@@ -60,14 +87,16 @@ Resources:
             Id:
               Fn::Sub:
                 "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
-            S3OriginConfig:
-              OriginAccessIdentity: !Join ["", ["origin-access-identity/cloudfront/", !GetAtt SiteCloudFrontOAI.Id]]
+            S3OriginConfig: ''
+            OriginAccessControlId: !GetAtt SiteCloudFrontOAC.Id
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
             Locations:
               - BR
             RestrictionType: whitelist
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
 
   SiteContentBucketPolicy:
     Type: AWS::S3::BucketPolicy
