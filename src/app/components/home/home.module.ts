@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home.routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { HomeComponent } from './home/home.component';
 import { CursosComponent } from './cursos/cursos.component';
@@ -31,6 +32,7 @@ import { ServiceModule } from 'src/app/services/service.module';
     MatCardModule,
     MatInputModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,

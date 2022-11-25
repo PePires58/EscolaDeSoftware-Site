@@ -15,6 +15,9 @@ jobs:
       - name: Restore dependencies
         run: npm install
 
+      - name: Test project
+        run: npm test
+
       - name: Build project
         run: npm run build
 

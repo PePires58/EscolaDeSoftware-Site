@@ -15,8 +15,11 @@ jobs:
       - name: Restore dependencies
         run: npm install
 
+      - name: Test project
+        run: npm test
+
       - name: Build project
-        run: npm run build
+        run: npm run build:prod
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
