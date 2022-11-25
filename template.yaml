@@ -22,6 +22,12 @@ Resources:
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
 
+  SiteCloudFrontOAI:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+    CloudFrontOriginAccessIdentityConfig:
+      Comment: !Sub "OIA para ${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
+
   SiteCloudFront:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -58,10 +64,9 @@ Resources:
             Id:
               Fn::Sub:
                 "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
-            CustomOriginConfig:
-              HTTPPort: 80
-              HTTPSPort: 8080
-              OriginProtocolPolicy: https-only
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${SiteCloudFrontOAI}"
+
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
