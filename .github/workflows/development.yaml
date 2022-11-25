@@ -21,7 +21,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: project dist
+          name: project-dist
           path: dist
 
   Deploy-infra:
@@ -50,6 +50,11 @@ jobs:
     needs: [Deploy-infra, Build-project]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Download project dist
+        uses: actions/download-artifact@v3
+        with:
+          name: project-dist
 
       - name: Deploy site
         run: aws s3 sync dist/escoladesoftware/ s3://dev-escoladesoftware-site
