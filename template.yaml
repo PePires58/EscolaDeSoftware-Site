@@ -35,7 +35,9 @@ Resources:
           CachedMethods:
             - GET
             - HEAD
-          TargetOriginId: "site_origin"
+          TargetOriginId: !GetAtt
+              - SiteContentBucket
+              - DomainName
           ForwardedValues:
               Cookies:
                 Forward: "none"
@@ -44,27 +46,29 @@ Resources:
           MaxTTL: 60
           MinTTL: 10
           DefaultTTL: 30
+          Compress: true
+          CachePolicyId: "CachingOptimized"
         DefaultRootObject: "index.html"
         Enabled: true
-        HttpVersion: http1.1
+        HttpVersion: http2
         IPV6Enabled: false
         Origins:
           - DomainName: !GetAtt
               - SiteContentBucket
               - DomainName
-            Id: "site_origin"
+            Id: !GetAtt
+              - SiteContentBucket
+              - DomainName
             CustomOriginConfig:
               HTTPPort: 80
               HTTPSPort: 8080
-              OriginProtocolPolicy: match-viewer
+              OriginProtocolPolicy: https-only
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
             Locations:
               - BR
             RestrictionType: whitelist
-        ViewerCertificate:
-          CloudFrontDefaultCertificate: true
 
   SiteContentBucketPolicy:
     Type: AWS::S3::BucketPolicy
