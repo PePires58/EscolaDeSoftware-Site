@@ -65,8 +65,8 @@ Resources:
               Fn::Sub:
                 "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
             S3OriginConfig:
-              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${SiteCloudFrontOAI}"
-
+              OriginAccessIdentity:
+                !Join ["", ["origin-access-identity/cloudfront/", !GetAtt SiteCloudFrontOAI.Id]]
         PriceClass: PriceClass_All
         Restrictions:
           GeoRestriction:
