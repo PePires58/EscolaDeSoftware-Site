@@ -4,9 +4,8 @@ on:
     branches: [development]
 
 jobs:
-  Deploy-stack:
+  Build-project:
     runs-on: ubuntu-18.04
-
     steps:
       - uses: actions/checkout@v2
 
@@ -19,6 +18,8 @@ jobs:
       - name: Build project
         run: npm run build
 
+  Deploy-infra:
+    runs-on: ubuntu-latest
       - name: Package Template
         run: |
           sam package --s3-bucket ${{ secrets.AWS_BUCKET_DEPLOY }} --template-file template.yaml --output-template-file deploy.yaml
@@ -35,6 +36,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
+  Deploy-site:
+    runs-on: ubuntu-latest
+    needs: [Deploy-infra, Build-project]
       - name: Deploy site
         run: aws s3 sync dist/escoladesoftware/ s3://dev-escoladesoftware-site
         env:

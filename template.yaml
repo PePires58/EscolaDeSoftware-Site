@@ -87,7 +87,8 @@ Resources:
             Id:
               Fn::Sub:
                 "${Environment}-${BucketName}.s3.${AWS::Region}.amazonaws.com"
-            S3OriginConfig: ''
+            S3OriginConfig:
+              OriginAccessIdentity: ''
             OriginAccessControlId: !GetAtt SiteCloudFrontOAC.Id
         PriceClass: PriceClass_All
         Restrictions:
