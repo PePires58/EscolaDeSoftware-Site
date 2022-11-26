@@ -1,4 +1,3 @@
-<div *ngIf="false" class="flex flex-align-center flex-justify-center div-spinner cor-fundo-escuro">
-  <mat-progress-spinner mode="determinate" value="carregando..."></mat-progress-spinner>
+<div *ngIf="isLoading | async" class="flex flex-align-center flex-justify-center div-spinner">
   <mat-spinner></mat-spinner>
 </div>

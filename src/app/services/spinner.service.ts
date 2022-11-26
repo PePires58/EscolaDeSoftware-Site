@@ -15,7 +15,7 @@ export class SpinnerService {
   public Invisivel(): void {
     this.$visivel = new Observable((obs) => {
       obs.next(false);
-    })
+    });
   }
 
   public Visivel(): void {

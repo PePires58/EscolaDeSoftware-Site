@@ -9,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpinnerComponent implements OnInit {
 
-  constructor(spinnerService: SpinnerService) {
+  isLoading: Observable<boolean>;
+
+  constructor(private spinnerService: SpinnerService) {
+    this.isLoading = this.spinnerService.$visivel;
   }
 
   ngOnInit(): void {
