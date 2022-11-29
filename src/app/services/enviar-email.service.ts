@@ -14,10 +14,6 @@ export class EnviarEmailService {
   constructor(private httpClient: HttpClient) { }
 
   public Post(dados: InfoTreinamentoCorporativo): Observable<InfoTreinamentoCorporativo> {
-    return this.httpClient.post<InfoTreinamentoCorporativo>(`${this.urlPost}`, dados, {
-      headers: {
-        "Access-Control-Allow-Origin": `https://${window.location.hostname}`
-      }
-    });
+    return this.httpClient.post<InfoTreinamentoCorporativo>(`${this.urlPost}`, dados);
   }
 }

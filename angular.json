@@ -70,10 +70,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "escoladesoftware:build:production"
+              "browserTarget": "escoladesoftware:build:production",
+              "proxyConfig": "src/proxy.conf.prod.json"
             },
             "development": {
-              "browserTarget": "escoladesoftware:build:development"
+              "browserTarget": "escoladesoftware:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

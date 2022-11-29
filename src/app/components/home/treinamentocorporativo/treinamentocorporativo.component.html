@@ -8,15 +8,16 @@
         <form [formGroup]="formTreinamento" class="flex-column">
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Email ou telefone</mat-label>
-            <input type="email" matInput formControlName="emailTelefone" placeholder="email ou telefone">
+            <input [ngModel]="infoTreinamentoCorporativo.emailTefefone" type="email" matInput
+              formControlName="emailTelefone" placeholder="email ou telefone">
             <mat-error *ngIf="formTreinamento.get('emailTelefone')?.hasError('required')">
               Email ou telefone é obrigatório
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Mensagem</mat-label>
-            <textarea maxlength="1000" matInput formControlName="descricao"
-              placeholder="digite sua mensagem para nós :D">
+            <textarea [ngModel]="infoTreinamentoCorporativo.descricao" maxlength="1000" matInput
+              formControlName="descricao" placeholder="digite sua mensagem para nós :D">
             </textarea>
             <mat-error *ngIf="formTreinamento.get('descricao')?.hasError('required')">
               Mensagem é obrigatória
