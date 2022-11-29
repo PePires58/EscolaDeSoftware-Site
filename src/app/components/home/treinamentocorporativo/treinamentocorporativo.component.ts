@@ -24,9 +24,21 @@ export class TreinamentocorporativoComponent {
   onEnviarDados() {
     if (this.formTreinamento.valid) {
       this.enviarEmailService.Post(this.infoTreinamentoCorporativo)
-        .subscribe();
+        .subscribe({
+          next: this.onEnviarDados.bind(this),
+          error: this.onEnviarDadosErro.bind(this)
+        });
     }
     else
       this.formTreinamento.markAllAsTouched();
+  }
+
+  onEnviarDadosOk() {
+    alert('E-mail enviado com sucesso');
+    this.formTreinamento.reset();
+  }
+
+  onEnviarDadosErro() {
+    alert('Ocorreu um erro ao enviar seu e-mail');
   }
 }
