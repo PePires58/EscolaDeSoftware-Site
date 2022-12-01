@@ -16,7 +16,7 @@ export class TreinamentocorporativoComponent {
   constructor(formBuilder: FormBuilder, private enviarEmailService: EnviarEmailService) {
     this.infoTreinamentoCorporativo = new InfoTreinamentoCorporativo();
     this.formTreinamento = formBuilder.group({
-      'emailTelefone': new FormControl(this.infoTreinamentoCorporativo.emailTefefone, Validators.required),
+      'email': new FormControl(this.infoTreinamentoCorporativo.email, Validators.required),
       'descricao': new FormControl(this.infoTreinamentoCorporativo.descricao, [Validators.required, Validators.maxLength(1000)])
     });
   }

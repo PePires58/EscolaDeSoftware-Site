@@ -8,9 +8,9 @@
         <form [formGroup]="formTreinamento" class="flex-column">
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Email ou telefone</mat-label>
-            <input [(ngModel)]="infoTreinamentoCorporativo.emailTefefone" type="email" matInput
-              formControlName="emailTelefone" placeholder="email ou telefone">
-            <mat-error *ngIf="formTreinamento.get('emailTelefone')?.hasError('required')">
+            <input [(ngModel)]="infoTreinamentoCorporativo.email" type="email" matInput formControlName="email"
+              placeholder="email ou telefone">
+            <mat-error *ngIf="formTreinamento.get('email')?.hasError('required')">
               Email ou telefone é obrigatório
             </mat-error>
           </mat-form-field>
