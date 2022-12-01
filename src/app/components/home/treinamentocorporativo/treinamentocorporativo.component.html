@@ -8,22 +8,22 @@
         <form [formGroup]="formTreinamento" class="flex-column">
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Email ou telefone</mat-label>
-            <input [(ngModel)]="infoTreinamentoCorporativo.email" type="email" matInput formControlName="email"
+            <input [(ngModel)]="infoTreinamentoCorporativo.Email" type="email" matInput formControlName="Email"
               placeholder="email ou telefone">
-            <mat-error *ngIf="formTreinamento.get('email')?.hasError('required')">
+            <mat-error *ngIf="formTreinamento.get('Email')?.hasError('required')">
               Email ou telefone é obrigatório
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Mensagem</mat-label>
-            <textarea [(ngModel)]="infoTreinamentoCorporativo.mensagem" maxlength="1000" matInput
-              formControlName="mensagem" placeholder="digite sua mensagem para nós :D">
+            <textarea [(ngModel)]="infoTreinamentoCorporativo.Mensagem" maxlength="1000" matInput
+              formControlName="Mensagem" placeholder="digite sua mensagem para nós :D">
             </textarea>
-            <mat-error *ngIf="formTreinamento.get('mensagem')?.hasError('required')">
+            <mat-error *ngIf="formTreinamento.get('Mensagem')?.hasError('required')">
               Mensagem é obrigatória
             </mat-error>
             <mat-error
-              *ngIf="formTreinamento.get('mensagem')?.hasError && !formTreinamento.get('mensagem')?.hasError('required')">
+              *ngIf="formTreinamento.get('Mensagem')?.hasError && !formTreinamento.get('Mensagem')?.hasError('required')">
               Mensagem deve ter no máximo 1000 caracteres
             </mat-error>
           </mat-form-field>
