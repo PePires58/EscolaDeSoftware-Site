@@ -40,6 +40,6 @@ export class TreinamentocorporativoComponent {
 
   onEnviarDadosErro(error: any) {
     alert('Ocorreu um erro ao enviar seu e-mail');
-    console.log(error.toString('base64'));
+    console.log(error);
   }
 }
