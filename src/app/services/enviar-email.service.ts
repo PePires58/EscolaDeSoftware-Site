@@ -14,6 +14,8 @@ export class EnviarEmailService {
   constructor(private httpClient: HttpClient) { }
 
   public Post(dados: InfoTreinamentoCorporativo): Observable<InfoTreinamentoCorporativo> {
+    console.log('dados post');
+    console.log(dados);
     return this.httpClient.post<InfoTreinamentoCorporativo>(`${this.urlPost}`, dados);
   }
 }
