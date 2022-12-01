@@ -23,7 +23,7 @@
               Mensagem é obrigatória
             </mat-error>
             <mat-error
-              *ngIf="formTreinamento.get('descricao')?.hasError && !formTreinamento.get('descricao')?.hasError('required')">
+              *ngIf="formTreinamento.get('mensagem')?.hasError && !formTreinamento.get('mensagem')?.hasError('required')">
               Mensagem deve ter no máximo 1000 caracteres
             </mat-error>
           </mat-form-field>
