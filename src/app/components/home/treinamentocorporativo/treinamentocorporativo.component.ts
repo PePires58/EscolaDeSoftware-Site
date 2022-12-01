@@ -17,7 +17,7 @@ export class TreinamentocorporativoComponent {
     this.infoTreinamentoCorporativo = new InfoTreinamentoCorporativo();
     this.formTreinamento = formBuilder.group({
       'email': new FormControl(this.infoTreinamentoCorporativo.email, Validators.required),
-      'descricao': new FormControl(this.infoTreinamentoCorporativo.descricao, [Validators.required, Validators.maxLength(1000)])
+      'mensagem': new FormControl(this.infoTreinamentoCorporativo.mensagem, [Validators.required, Validators.maxLength(1000)])
     });
   }
 
@@ -40,6 +40,6 @@ export class TreinamentocorporativoComponent {
 
   onEnviarDadosErro(error: any) {
     alert('Ocorreu um erro ao enviar seu e-mail');
-    console.log(error.error.toString('base64'));
+    console.log(error);
   }
 }

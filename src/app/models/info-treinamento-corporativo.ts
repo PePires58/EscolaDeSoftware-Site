@@ -1,9 +1,9 @@
 export class InfoTreinamentoCorporativo {
 
   constructor() {
-    this.email = this.descricao = '';
+    this.email = this.mensagem = '';
   }
 
   email: string;
-  descricao: string;
+  mensagem: string;
 }

@@ -16,10 +16,10 @@
           </mat-form-field>
           <mat-form-field class="full-width" appearance="standard">
             <mat-label>Mensagem</mat-label>
-            <textarea [(ngModel)]="infoTreinamentoCorporativo.descricao" maxlength="1000" matInput
-              formControlName="descricao" placeholder="digite sua mensagem para nós :D">
+            <textarea [(ngModel)]="infoTreinamentoCorporativo.mensagem" maxlength="1000" matInput
+              formControlName="mensagem" placeholder="digite sua mensagem para nós :D">
             </textarea>
-            <mat-error *ngIf="formTreinamento.get('descricao')?.hasError('required')">
+            <mat-error *ngIf="formTreinamento.get('mensagem')?.hasError('required')">
               Mensagem é obrigatória
             </mat-error>
             <mat-error
