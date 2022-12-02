@@ -73,7 +73,8 @@
               "browserTarget": "escoladesoftware:build:production"
             },
             "development": {
-              "browserTarget": "escoladesoftware:build:development"
+              "browserTarget": "escoladesoftware:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
