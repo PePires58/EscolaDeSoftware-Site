@@ -33,7 +33,7 @@ export class TreinamentocorporativoComponent {
       this.formTreinamento.markAllAsTouched();
   }
 
-  onEnviarDadosOk() {
+  onEnviarDadosOk(data: any) {
     alert('E-mail enviado com sucesso');
     this.formTreinamento.reset();
   }
