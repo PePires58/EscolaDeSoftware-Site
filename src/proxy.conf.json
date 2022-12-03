@@ -1,5 +1,5 @@
 {
-  "/prod": {
+  "/prod/email": {
     "target": "https://sjiiqktqx2.execute-api.sa-east-1.amazonaws.com",
     "secure": true
   }
