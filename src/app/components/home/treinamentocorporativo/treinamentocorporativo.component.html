@@ -7,11 +7,15 @@
           solução. Entre em contato conosco e solicite um treinamento.</p>
         <form [formGroup]="formTreinamento" class="flex-column">
           <mat-form-field class="full-width" appearance="standard">
-            <mat-label>Email ou telefone</mat-label>
+            <mat-label>Email</mat-label>
             <input [(ngModel)]="infoTreinamentoCorporativo.Email" type="email" matInput formControlName="Email"
-              placeholder="email ou telefone">
+              placeholder="email">
             <mat-error *ngIf="formTreinamento.get('Email')?.hasError('required')">
-              Email ou telefone é obrigatório
+              Email é obrigatório
+            </mat-error>
+            <mat-error
+              *ngIf="formTreinamento.get('Email')?.hasError && !formTreinamento.get('Email')?.hasError('required')">
+              Email inválido
             </mat-error>
           </mat-form-field>
           <mat-form-field class="full-width" appearance="standard">

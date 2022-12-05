@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TreinamentocorporativoComponent } from './treinamentocorporativo.component';
-import { EnviarEmailService } from 'src/app/services/enviar-email.service';
 
 describe('TreinamentocorporativoComponent', () => {
   let component: TreinamentocorporativoComponent;

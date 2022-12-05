@@ -16,7 +16,7 @@ export class TreinamentocorporativoComponent {
   constructor(formBuilder: FormBuilder, private enviarEmailService: EnviarEmailService) {
     this.infoTreinamentoCorporativo = new InfoTreinamentoCorporativo();
     this.formTreinamento = formBuilder.group({
-      'Email': new FormControl(this.infoTreinamentoCorporativo.Email, Validators.required),
+      'Email': new FormControl(this.infoTreinamentoCorporativo.Email, [Validators.required, Validators.email]),
       'Mensagem': new FormControl(this.infoTreinamentoCorporativo.Mensagem, [Validators.required, Validators.maxLength(1000)])
     });
   }
@@ -29,15 +29,12 @@ export class TreinamentocorporativoComponent {
             alert('E-mail enviado com sucesso');
             this.formTreinamento.reset();
           },
-          error: this.onEnviarDadosErro.bind(this)
+          error: () => {
+            alert('Ocorreu um erro ao enviar seu e-mail');
+          }
         });
     }
     else
       this.formTreinamento.markAllAsTouched();
-  }
-
-  onEnviarDadosErro(error: any) {
-    alert('Ocorreu um erro ao enviar seu e-mail');
-    console.log(error);
   }
 }
