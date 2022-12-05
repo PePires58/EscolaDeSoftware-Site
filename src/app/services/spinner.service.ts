@@ -1,26 +1,22 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpinnerService {
-  public $visivel: Observable<boolean>;
+  private visivel: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public $visivel: Observable<boolean> = this.visivel.asObservable();
 
   constructor() {
-    this.$visivel = new Observable((obs) =>
-      obs.next(false));
+    this.Invisivel();
   }
 
   public Invisivel(): void {
-    this.$visivel = new Observable((obs) => {
-      obs.next(false);
-    });
+    this.visivel.next(false);
   }
 
   public Visivel(): void {
-    this.$visivel = new Observable((obs) => {
-      obs.next(true);
-    })
+    this.visivel.next(true);
   }
 }
