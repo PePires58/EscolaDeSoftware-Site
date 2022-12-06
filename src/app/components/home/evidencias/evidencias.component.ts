@@ -28,8 +28,8 @@ export class EvidenciasComponent {
     },
     {
       nomePessoa: 'Thais Soares',
-      descricaoEvidencia: 'O seu conteúdo está bem legal, parabéns.',
-      linkEvidencia: 'https://www.youtube.com/watch?v=tgMnKf96h2k'
+      descricaoEvidencia: 'Pedro eu quero agradecer pelos ensinamentos. Seu curso me ajudou muito, consegui a minha certificação dia 16! Valeu por tudo.',
+      linkEvidencia: 'https://www.youtube.com/watch?v=gRvJdGkC4so'
     }];
   }
 }
