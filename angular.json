@@ -23,6 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "outputHashing": "all",
             "assets": [
               "src/favicon.ico",
               "src/assets",
