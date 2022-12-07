@@ -26,7 +26,6 @@
             "outputHashing": "all",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
               "src/assets"
             ],
             "styles": [
